@@ -36,4 +36,4 @@ Este projeto foca na previsão de limites de crédito para clientes bancários u
 * **Fonte:** Kaggle - Credit Card Dataset for Clustering
 
 ### Status Atual
-🏗️ **Em progresso:** Concluí a fase de ETL (Extração, Transformação e Carga), migrando os dados brutos do CSV para um banco de dados SQL.
+🏗️ **Em progresso:** O módulo de ETL (Engenharia) foi finalizado com sucesso. Atualmente, o projeto está focado na extração de inteligência de negócio (BI) e validação de hipóteses de risco via SQL e Python.
