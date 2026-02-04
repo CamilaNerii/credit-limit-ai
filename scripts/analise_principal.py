@@ -21,3 +21,20 @@ df['minimum_payments'] = pd.to_numeric(df['minimum_payments'])
 
 print(f"Linhas carregadas: {df.shape[0]}")
 print(df.head())
+
+
+
+# --- BLOCO DE RELATÓRIO FINAL ---
+media_gastos = df['purchases'].mean()
+total_vips = len(df)
+
+print("\n") # Pula linha
+print("=" * 45)
+print("📊 RESULTADO DA ANÁLISE DE CRÉDITO (VIPs)")
+print("=" * 45)
+print(f"🎯 Critério Utilizado: Limite >= $10.000")
+print(f"👥 Quantidade de Clientes: {total_vips}")
+print("-" * 45)
+print(f"💰 MÉDIA DE GASTOS REAIS: ${media_gastos:,.2f}")
+print("=" * 45)
+print("\n")
