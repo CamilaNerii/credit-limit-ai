@@ -1,7 +1,7 @@
 # 💳 Credit Limit AI - Intelligent Limit Allocation
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![SQL](https://img.shields.io/badge/Database-SQLite-blue)
+![Pandas](https://img.shields.io/badge/Data-Pandas-150458.svg)
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 [🇺🇸 English](#english) | [🇧🇷 Português](#portugues)
@@ -23,7 +23,7 @@ Before modeling, an extensive Exploratory Data Analysis (EDA) using SQL revealed
     * *High Limit (> $7k):* ~4% risk rate.
 
 ### 🧠 Modeling Strategy: The "Ideal Limit" (Target Engineering)
-Instead of training the model to predict the *current* bank limit (which may contain historical biases), we engineered a new target variable called `Ideal_Credit_Limit`. The goal is to correct inefficiencies:
+Instead of training the model to predict the *current* bank limit (which may contain historical biases), we engineered a new target variable called `Ideal_Credit_Limit` using Python. The goal is to correct inefficiencies:
 
 | Customer Profile | Observed Behavior | Model Action (Logic) |
 | :--- | :--- | :--- |
@@ -34,16 +34,17 @@ Instead of training the model to predict the *current* bank limit (which may con
 *Outcome:* The AI learns to suggest the limit a customer *should have*, rather than just copying what they *currently have*.
 
 ### 🛠️ Tech Stack
-* **Core:** Python 🐍 (Pandas, Numpy)
-* **Database & Analytics:** SQL (SQLite) for Data Warehousing and KPI extraction.
-* **Machine Learning:** Scikit-Learn (Random Forest / XGBoost - *Upcoming*).
-* **Visualization:** Matplotlib/Seaborn & Power BI (*Upcoming*).
+* **Core:** Python 🐍 (Pandas, Numpy).
+* **Data Prep:** Scikit-Learn (Imputation & Scaling).
+* **Database & Analytics:** SQL (SQLite) for Data Warehousing.
+* **Machine Learning:** Random Forest Regressor (*Upcoming*).
 
 ### 🚀 Current Status & Roadmap
 * ✅ **Phase 1: ETL & Database Setup** (Raw CSV $\to$ SQLite).
-* ✅ **Phase 2: SQL Exploratory Analysis** (Risk factors identified: Cash Advance & Low Limits).
-* ✅ **Phase 3: Business Logic Definition** (Rules for the "Ideal Limit" target created).
-* 🔄 **Phase 4 (Current):** Feature Engineering in Python & Machine Learning Modeling.
+* ✅ **Phase 2: SQL Exploratory Analysis** (Risk factors identified).
+* ✅ **Phase 3: Feature Engineering** (Created `Ideal_Credit_Limit` target variable based on Risk Rules).
+* ✅ **Phase 4: Data Preprocessing** (Cleaning, removing IDs, handling NaN values).
+* 🔄 **Phase 5 (Next):** Machine Learning Model Training.
 
 ---
 
@@ -62,7 +63,7 @@ Antes da modelagem, uma Análise Exploratória de Dados (EDA) via SQL revelou pa
     * *Limite Alto (> $7k):* ~4% de taxa de risco.
 
 ### 🧠 Estratégia de Modelagem: O "Limite Ideal" (Target Engineering)
-Em vez de treinar o modelo para prever o limite *atual* do banco (que pode conter erros históricos), criamos uma nova variável alvo chamada `Ideal_Credit_Limit`. O objetivo é corrigir distorções:
+Em vez de treinar o modelo para prever o limite *atual* do banco (que pode conter erros históricos), criamos uma nova variável alvo chamada `Ideal_Credit_Limit` usando Python. O objetivo é corrigir distorções:
 
 | Perfil do Cliente | Comportamento Observado | Ação do Modelo (Lógica) |
 | :--- | :--- | :--- |
@@ -73,13 +74,26 @@ Em vez de treinar o modelo para prever o limite *atual* do banco (que pode conte
 *Resultado:* A IA aprende a sugerir o limite que o cliente *deveria ter*, e não necessariamente o que ele *tem*.
 
 ### 🛠️ Tecnologias Utilizadas
-* **Core:** Python 🐍 (Pandas, Numpy)
-* **Banco de Dados & Analytics:** SQL (SQLite) para Data Warehousing e extração de KPIs.
-* **Machine Learning:** Scikit-Learn (Random Forest / XGBoost - *Em breve*).
-* **Visualização:** Matplotlib/Seaborn & Power BI (*Em breve*).
+* **Core:** Python 🐍 (Pandas, Numpy).
+* **Data Prep:** Scikit-Learn (Imputation & Scaling).
+* **Banco de Dados & Analytics:** SQL (SQLite) para Data Warehousing.
+* **Machine Learning:** Random Forest Regressor (*Em breve*).
 
 ### 🚀 Status Atual & Roadmap
 * ✅ **Fase 1: ETL & Configuração do Banco** (CSV Bruto $\to$ SQLite).
-* ✅ **Fase 2: Análise Exploratória SQL** (Fatores de risco identificados: Saque/Cash Advance & Limites Baixos).
-* ✅ **Fase 3: Definição de Lógica de Negócio** (Regras para a variável "Limite Ideal" criadas).
-* 🔄 **Fase 4 (Atual):** Engenharia de Atributos (Feature Engineering) em Python & Modelagem de Machine Learning.
+* ✅ **Fase 2: Análise Exploratória SQL** (Fatores de risco identificados).
+* ✅ **Fase 3: Feature Engineering** (Criação da variável Target `Ideal_Credit_Limit` baseada em regras de risco).
+* ✅ **Fase 4: Pré-processamento de Dados** (Limpeza, remoção de IDs e tratamento de valores nulos).
+* 🔄 **Fase 5 (Próxima):** Treinamento do Modelo de Machine Learning.
+
+---
+
+### ⚙️ How to Run (Como Executar)
+To reproduce the dataset processing:
+
+```bash
+# 1. Generate Target Variable (Ideal Limit)
+python scripts/feature_engineering.py
+
+# 2. Clean Data for ML (Remove Nulls & IDs)
+python scripts/2_preparacao_ml.py
