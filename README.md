@@ -98,7 +98,7 @@ python scripts/feature_engineering.py
 # 2. Clean Data for ML (Remove Nulls & IDs)
 python scripts/2_preparacao_ml.py
 
----
+```
 
 ## 👩‍💻 Author / Autora
 
