@@ -43,3 +43,35 @@ else:
     # Salva o arquivo novo
     df.to_csv(caminho_salvar, index=False)
     print(f"\n💾 Arquivo salvo com sucesso em: {caminho_salvar}")
+
+
+
+# --- COLE ISSO NO FINAL DO SEU ARQUIVO (SUBSTITUINDO O PRINT ANTERIOR) ---
+
+# 1. Pegamos os dados reais dos nossos "personagens" da história
+cliente_risco = df[df['CUST_ID'] == 'C10002'].iloc[0]
+cliente_top = df[df['CUST_ID'] == 'C10003'].iloc[0]
+
+# 2. Desenhamos o Relatório Visual (O estilo do seu post viral)
+print("\n")
+print("="*60)
+print(" 🛠  RESULTADO: TARGET ENGINEERING (CORREÇÃO DE LIMITES)")
+print("="*60)
+
+print(f" 🔴 CASO 1: RISCO DETECTADO (Uso de Saque/Alavancagem)")
+print(f"    🆔 Cliente:       {cliente_risco['CUST_ID']}")
+print(f"    💳 Limite Banco:  ${cliente_risco['CREDIT_LIMIT']:,.2f}")
+print(f"    💸 Dívida Real:   ${cliente_risco['BALANCE']:,.2f}")
+print(f"    🔒 NOVO TARGET:   ${cliente_risco['Ideal_Credit_Limit']:,.2f} (Redução de Segurança)")
+
+print("-" * 60)
+
+print(f" 🟢 CASO 2: OPORTUNIDADE (Bom Pagador + Baixo Uso)")
+print(f"    🆔 Cliente:       {cliente_top['CUST_ID']}")
+print(f"    💳 Limite Banco:  ${cliente_top['CREDIT_LIMIT']:,.2f}")
+print(f"    💸 Dívida Real:   ${cliente_top['BALANCE']:,.2f}")
+print(f"    🚀 NOVO TARGET:   ${cliente_top['Ideal_Credit_Limit']:,.2f} (Aumento de 20%)")
+
+print("="*60)
+print(f" 💾 Arquivo 'Target' gerado com sucesso para {len(df)} clientes.")
+print("="*60 + "\n")
