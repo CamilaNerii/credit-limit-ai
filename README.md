@@ -100,9 +100,9 @@ python scripts/2_preparacao_ml.py
 
 ```
 
-## 👩‍💻 Author / Autora
+## 👩‍💻 Autora
 
-**Camila Neri** *Data Analyst | Python & SQL Enthusiast*
+**Camila Neri**
+*Data Analyst | Python & SQL Enthusiast*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/camilanerii/) 
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat&logo=github)](https://github.com/CamilaNerii)
+[LinkedIn](https://www.linkedin.com/in/camilanerii/) | [GitHub](https://github.com/CamilaNerii)
