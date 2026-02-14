@@ -97,3 +97,12 @@ python scripts/feature_engineering.py
 
 # 2. Clean Data for ML (Remove Nulls & IDs)
 python scripts/2_preparacao_ml.py
+
+---
+
+## 👩‍💻 Author / Autora
+
+**Camila Neri** *Data Analyst | Python & SQL Enthusiast*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/camilanerii/) 
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat&logo=github)](https://github.com/CamilaNerii)
