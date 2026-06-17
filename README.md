@@ -10,97 +10,191 @@
 ---
 
 <a name="english"></a>
+
 ## 🇺🇸 English
 
 ### 🎯 Project Overview
-This project successfully built an end-to-end data pipeline and a **Regression Machine Learning Model** to predict the **"Ideal Credit Limit"** for 8,950 banking customers. Unlike traditional models that just classify risk (Classification), this solution calculates the exact credit amount that balances **Revenue Opportunity** with **Default Risk**.
+
+This project built an end-to-end data pipeline and a **Regression Machine Learning Model** to estimate an **"Ideal Credit Limit"** for 8,950 banking customers.
+
+Unlike traditional approaches focused only on risk classification, this project explores how business rules and customer financial behavior can be combined to recommend a credit limit that balances **Revenue Opportunity** and **Risk Exposure**.
+
+---
 
 ### 🔍 Key Business Insights (SQL & ETL Phase)
-Before modeling, an extensive Exploratory Data Analysis (EDA) using SQL and Python revealed crucial behavioral patterns stored across our **Staging Area (`credit_data.db`)**:
 
-1.  **The "Cash Advance" Risk Factor:** Customers who frequently use their **credit card limit to withdraw cash** are **4x more likely** to default.
-2.  **The Limit Paradox:** High-limit customers are proportionally safer.
-    * *Low Limit (< $2.5k):* ~20% risk rate.
-    * *High Limit (> $7k):* ~4% risk rate.
+Before modeling, an Exploratory Data Analysis (EDA) using SQL and Python revealed important behavioral patterns stored in the **Staging Area (`credit_data.db`)**:
 
-### 🧠 Target Engineering & Preprocessing
-Instead of training the model to predict the *current* bank limit, we engineered a new target variable called `Ideal_Credit_Limit` based on financial risk rules. 
-During **Phase 4 (Data Preparation)**, we removed the `CUST_ID` to avoid overfitting and handled **314 missing values** using **Median Imputation**, producing a clean dataset ready for Scikit-Learn.
+1. **Cash Advance Risk Indicator**
 
-### 📊 Model Performance & Final Results (Phase 5)
-The model was trained using a **Random Forest Regressor** (80/20 train/test split) and achieved elite-level baseline metrics:
+   * Customers with high cash advance utilization presented significantly higher risk indicators compared to the overall customer base.
 
-| Metric | Value | Business Impact |
-| :--- | :--- | :--- |
-| **Evaluated Credit Mean** | $3,979.26 | Baseline average of the portfolio. |
-| **Mean Absolute Error (MAE)** | $296.56 | On average, predictions deviate by only $296. |
-| **Relative Error Rate** | 7.45% | Extremely low error variance relative to the total limit. |
-| **Overall Model Accuracy** | **92.55%** | **Highly reliable for production deployment.** |
+2. **Credit Limit Distribution**
+
+   * Customers with higher credit limits tended to exhibit more stable financial behavior than customers in lower credit limit ranges.
+
+---
+
+### 🧠 Target Engineering Strategy
+
+The target variable (`Ideal_Credit_Limit`) was engineered using business rules based on:
+
+* Credit utilization behavior
+* Cash advance activity
+* Financial risk indicators
+* Credit opportunity scenarios
+
+The objective was not to reproduce historical bank decisions, but to evaluate whether a Machine Learning model could learn and approximate a rule-based credit policy.
+
+---
+
+### 🧹 Data Preparation
+
+During **Phase 4**, the dataset underwent preprocessing steps including:
+
+* Removal of `CUST_ID` to reduce noise and avoid overfitting.
+* Treatment of **314 missing values** using **Median Imputation**.
+* Preparation of a clean dataset suitable for Machine Learning workflows.
+
+Final dataset size:
+
+* **8,950 customers**
+* **0 missing values after preprocessing**
+
+---
+
+### 📊 Model Performance (Phase 5)
+
+A **Random Forest Regressor** was trained using an 80/20 train-test split.
+
+| Metric                        | Value     | Business Interpretation             |
+| ----------------------------- | --------- | ----------------------------------- |
+| **Mean Credit Limit**         | $3,979.26 | Portfolio baseline average          |
+| **Mean Absolute Error (MAE)** | $296.56   | Average prediction deviation        |
+| **Relative Error Rate**       | 7.45%     | Error relative to portfolio average |
+
+The model demonstrated consistent performance within the project validation dataset and successfully learned the patterns defined by the engineered credit policy.
 
 ---
 
 <a name="portugues"></a>
+
 ## 🇧🇷 Português
 
 ### 🎯 Visão Geral do Projeto
-Este projeto construiu com sucesso um pipeline de dados ponta a ponta e um **Modelo de Machine Learning (Regressão)** para prever o **"Limite de Crédito Ideal"** para 8.950 clientes bancários. Diferente de modelos que apenas classificam o risco, esta solução calcula o valor exato de limite que equilibra **Oportunidade de Receita** com **Mitigação de Inadimplência**.
+
+Este projeto desenvolveu um pipeline de dados ponta a ponta e um **Modelo de Machine Learning de Regressão** para estimar um **"Limite de Crédito Ideal"** para 8.950 clientes bancários.
+
+Diferentemente de abordagens focadas apenas na classificação de risco, o projeto explora como regras de negócio e comportamento financeiro podem ser combinados para recomendar um limite de crédito que equilibre **Oportunidade de Receita** e **Exposição ao Risco**.
+
+---
 
 ### 🔍 Insights de Negócio (Fase SQL & ETL)
-Antes da modelagem, uma Análise Exploratória de Dados (EDA) via SQL e Python revelou padrões comportamentais cruciais armazenados na nossa **Staging Area (`credit_data.db`)**:
 
-1.  **O Fator de Risco do Saque (Cash Advance):** Clientes que utilizam o **limite do cartão de crédito para realizar saques em espécie** têm **4x mais chances** de inadimplência.
-2.  **O Paradoxo do Limite:** Clientes com limites altos são proporcionalmente mais seguros.
-    * *Limite Baixo (< $2.5k):* ~20% de taxa de risco.
-    * *Limite Alto (> $7k):* ~4% de taxa de risco.
+Antes da modelagem, uma Análise Exploratória de Dados (EDA) utilizando SQL e Python identificou padrões relevantes armazenados na **Staging Area (`credit_data.db`)**:
 
-### 🧠 Target Engineering & Pré-processamento
-Em vez de prever o limite atual do banco, criamos a variável `Ideal_Credit_Limit` baseada em regras de risco financeiro. 
-Na **Fase 4 (Data Preparation)**, removemos a coluna `CUST_ID` (Noise Reduction) e tratamos **314 valores nulos** utilizando a estratégia de **Imputação pela Mediana**, gerando uma base consistente e livre de vieses.
+1. **Indicador de Risco de Cash Advance**
 
-### 📊 Performance do Modelo e Resultados Finais (Fase 5)
-O modelo foi validado através do algoritmo **Random Forest Regressor** (divisão 80/20) e alcançou métricas de excelência:
+   * Clientes com alta utilização de saques via cartão apresentaram indicadores de risco significativamente superiores ao restante da base.
 
-| Métrica | Valor | Impacto de Negócio |
-| :--- | :--- | :--- |
-| **Limite Médio Avaliado** | $3,979.26 | Média histórica do portfólio de crédito. |
-| **Erro Médio Absoluto (MAE)** | $296.56 | Em média, as previsões erram por apenas $296 dólares. |
-| **Taxa de Erro Relativo** | 7.45% | Variância de erro extremamente baixa em relação ao limite total. |
-| **Precisão Geral do Modelo** | **92.55%** | **Alta confiabilidade para tomada de decisão em produção.** |
+2. **Distribuição dos Limites de Crédito**
+
+   * Clientes com limites mais elevados demonstraram comportamento financeiro mais estável quando comparados às faixas de limite mais baixas.
 
 ---
 
-### 🛠️ Tech Stack / Tecnologias
-* **Core:** Python 🐍 (Pandas, Numpy).
-* **Data Prep & ML:** Scikit-Learn (`SimpleImputer`, `RandomForestRegressor`).
-* **Database & Analytics:** SQL (SQLite) para armazenamento e persistência da base limpa.
+### 🧠 Estratégia de Target Engineering
 
-### 🚀 Roadmap Concluído
-* ✅ **Fase 1:** Ingestão de Dados e Carga SQL (`credit_data.db`).
-* ✅ **Fase 2:** Análise Exploratória SQL (Identificação de fatores de risco).
-* ✅ **Fase 3:** Target Engineering (Criação das regras de limite ideal).
-* ✅ **Fase 4:** Data Preprocessing (Tratamento de 314 nulos via Mediana e eliminação de ruídos).
-* ✅ **Fase 5:** Treinamento e Validação do Modelo de Machine Learning (**92.55% de Precisão**).
+A variável alvo (`Ideal_Credit_Limit`) foi construída a partir de regras de negócio relacionadas a:
+
+* Utilização de crédito
+* Comportamento de cash advance
+* Indicadores de risco financeiro
+* Cenários de oportunidade de crédito
+
+O objetivo não foi reproduzir decisões históricas de uma instituição financeira, mas avaliar se um modelo de Machine Learning seria capaz de aprender e aproximar uma política de crédito baseada em regras.
 
 ---
 
-### ⚙️ How to Run / Como Executar
+### 🧹 Preparação dos Dados
+
+Durante a **Fase 4**, foram executadas as seguintes etapas:
+
+* Remoção da coluna `CUST_ID` para redução de ruído e prevenção de overfitting.
+* Tratamento de **314 valores ausentes** utilizando **Imputação pela Mediana**.
+* Preparação de uma base consistente para treinamento do modelo.
+
+Base final:
+
+* **8.950 clientes**
+* **0 valores ausentes após o pré-processamento**
+
+---
+
+### 📊 Performance do Modelo (Fase 5)
+
+O modelo **Random Forest Regressor** foi treinado utilizando divisão de 80% para treino e 20% para teste.
+
+| Métrica                       | Valor     | Interpretação                               |
+| ----------------------------- | --------- | ------------------------------------------- |
+| **Limite Médio Avaliado**     | $3,979.26 | Média da carteira analisada                 |
+| **Erro Médio Absoluto (MAE)** | $296.56   | Desvio médio das previsões                  |
+| **Taxa de Erro Relativo**     | 7.45%     | Erro em relação ao limite médio da carteira |
+
+O modelo apresentou desempenho consistente dentro do conjunto de validação do projeto e foi capaz de aprender os padrões definidos pela política de crédito construída durante a etapa de engenharia da variável alvo.
+
+---
+
+## 🛠️ Tech Stack / Tecnologias
+
+* **Python** (Pandas, NumPy)
+* **Scikit-Learn**
+
+  * RandomForestRegressor
+  * Train/Test Split
+* **SQLite**
+* **SQL**
+* **Data Cleaning & Preprocessing**
+* **Feature Engineering**
+
+---
+
+## 🚀 Roadmap Concluído
+
+* ✅ **Fase 1:** Ingestão de Dados e Carga SQL (`credit_data.db`)
+* ✅ **Fase 2:** Análise Exploratória de Dados (EDA)
+* ✅ **Fase 3:** Target Engineering (Construção do Ideal Credit Limit)
+* ✅ **Fase 4:** Data Preprocessing (Tratamento de 314 valores ausentes)
+* ✅ **Fase 5:** Machine Learning Validation (MAE = $296.56 | Relative Error = 7.45%)
+
+---
+
+## ⚙️ How to Run / Como Executar
 
 ```bash
 # 1. Execute the ETL and Database Load
 python scripts/01_etl_carga.py
 
-# 2. Run Target Engineering (Risk & Opportunity rules)
+# 2. Run Target Engineering
 python scripts/02_target_engineering.py
 
-# 3. Data Preparation (Median Imputation & Cleaning)
+# 3. Data Preparation
 python scripts/03_data_preparation.py
 
-# 4. Train and Validate the Machine Learning Model (Phase 05)
+# 4. Train and Validate the Model
 python scripts/analise_principal.py
 ```
 
-### 👩‍💻 Autora
-Camila Neri
-Data Analyst | Python & SQL Enthusiast
+---
 
-[LinkedIn](https://www.linkedin.com/in/camilanerii/) | [GitHub](https://github.com/CamilaNerii)
+## 👩‍💻 Author / Autora
+
+**Camila Neri**
+
+Data Analytics | Python | SQL | Machine Learning
+
+LinkedIn:
+https://www.linkedin.com/in/camilanerii/
+
+GitHub:
+https://github.com/CamilaNerii
