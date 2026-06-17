@@ -1,8 +1,10 @@
 # 💳 Credit Limit AI - Intelligent Limit Allocation
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![Pandas](https://img.shields.io/badge/Data-Pandas-150458.svg)
-![Machine Learning](https://img.shields.io/badge/ML-Random%20Forest-green.svg)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458.svg)
+![SQL](https://img.shields.io/badge/Database-SQLite-003B57.svg)
+![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-F7931E.svg)
+![Random Forest](https://img.shields.io/badge/Model-Random%20Forest-green.svg)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 [🇺🇸 English](#english) | [🇧🇷 Português](#portugues)
@@ -15,7 +17,9 @@
 
 ### 🎯 Project Overview
 
-This project built an end-to-end data pipeline and a **Regression Machine Learning Model** to estimate an **"Ideal Credit Limit"** for 8,950 banking customers.
+> **Note:** This project was developed for educational and portfolio purposes using a publicly available credit card customer dataset.
+
+This project built an end-to-end data pipeline and a **Regression Machine Learning Model** to estimate an **"Ideal Credit Limit"** for **8,950 credit card customers**.
 
 Unlike traditional approaches focused only on risk classification, this project explores how business rules and customer financial behavior can be combined to recommend a credit limit that balances **Revenue Opportunity** and **Risk Exposure**.
 
@@ -25,13 +29,13 @@ Unlike traditional approaches focused only on risk classification, this project 
 
 Before modeling, an Exploratory Data Analysis (EDA) using SQL and Python revealed important behavioral patterns stored in the **Staging Area (`credit_data.db`)**:
 
-1. **Cash Advance Risk Indicator**
+#### 1. Cash Advance Risk Indicator
 
-   * Customers with high cash advance utilization presented significantly higher risk indicators compared to the overall customer base.
+Customers with high cash advance utilization presented higher risk indicators compared to the overall customer base.
 
-2. **Credit Limit Distribution**
+#### 2. Credit Limit Distribution
 
-   * Customers with higher credit limits tended to exhibit more stable financial behavior than customers in lower credit limit ranges.
+Customers with higher credit limits tended to exhibit more stable financial behavior than customers in lower credit limit ranges.
 
 ---
 
@@ -52,9 +56,9 @@ The objective was not to reproduce historical bank decisions, but to evaluate wh
 
 During **Phase 4**, the dataset underwent preprocessing steps including:
 
-* Removal of `CUST_ID` to reduce noise and avoid overfitting.
-* Treatment of **314 missing values** using **Median Imputation**.
-* Preparation of a clean dataset suitable for Machine Learning workflows.
+* Removal of `CUST_ID` to reduce noise and avoid overfitting
+* Treatment of **314 missing values** using **Median Imputation**
+* Preparation of a clean dataset suitable for Machine Learning workflows
 
 Final dataset size:
 
@@ -73,7 +77,7 @@ A **Random Forest Regressor** was trained using an 80/20 train-test split.
 | **Mean Absolute Error (MAE)** | $296.56   | Average prediction deviation        |
 | **Relative Error Rate**       | 7.45%     | Error relative to portfolio average |
 
-The model demonstrated consistent performance within the project validation dataset and successfully learned the patterns defined by the engineered credit policy.
+The model demonstrated consistent performance within the project validation dataset and was able to learn the patterns defined by the engineered credit policy.
 
 ---
 
@@ -83,7 +87,9 @@ The model demonstrated consistent performance within the project validation data
 
 ### 🎯 Visão Geral do Projeto
 
-Este projeto desenvolveu um pipeline de dados ponta a ponta e um **Modelo de Machine Learning de Regressão** para estimar um **"Limite de Crédito Ideal"** para 8.950 clientes bancários.
+> **Observação:** Este projeto foi desenvolvido para fins educacionais e de portfólio utilizando uma base pública de clientes de cartão de crédito.
+
+Este projeto desenvolveu um pipeline de dados ponta a ponta e um **Modelo de Machine Learning de Regressão** para estimar um **"Limite de Crédito Ideal"** para **8.950 clientes de cartão de crédito**.
 
 Diferentemente de abordagens focadas apenas na classificação de risco, o projeto explora como regras de negócio e comportamento financeiro podem ser combinados para recomendar um limite de crédito que equilibre **Oportunidade de Receita** e **Exposição ao Risco**.
 
@@ -93,13 +99,13 @@ Diferentemente de abordagens focadas apenas na classificação de risco, o proje
 
 Antes da modelagem, uma Análise Exploratória de Dados (EDA) utilizando SQL e Python identificou padrões relevantes armazenados na **Staging Area (`credit_data.db`)**:
 
-1. **Indicador de Risco de Cash Advance**
+#### 1. Indicador de Risco de Cash Advance
 
-   * Clientes com alta utilização de saques via cartão apresentaram indicadores de risco significativamente superiores ao restante da base.
+Clientes com alta utilização de saques via cartão apresentaram indicadores de risco superiores ao restante da base.
 
-2. **Distribuição dos Limites de Crédito**
+#### 2. Distribuição dos Limites de Crédito
 
-   * Clientes com limites mais elevados demonstraram comportamento financeiro mais estável quando comparados às faixas de limite mais baixas.
+Clientes com limites mais elevados demonstraram comportamento financeiro mais estável quando comparados às faixas de limite mais baixas.
 
 ---
 
@@ -120,9 +126,9 @@ O objetivo não foi reproduzir decisões históricas de uma instituição financ
 
 Durante a **Fase 4**, foram executadas as seguintes etapas:
 
-* Remoção da coluna `CUST_ID` para redução de ruído e prevenção de overfitting.
-* Tratamento de **314 valores ausentes** utilizando **Imputação pela Mediana**.
-* Preparação de uma base consistente para treinamento do modelo.
+* Remoção da coluna `CUST_ID` para redução de ruído e prevenção de overfitting
+* Tratamento de **314 valores ausentes** utilizando **Imputação pela Mediana**
+* Preparação de uma base consistente para treinamento do modelo
 
 Base final:
 
