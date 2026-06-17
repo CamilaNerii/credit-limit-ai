@@ -103,4 +103,4 @@ python scripts/analise_principal.py
 Camila Neri
 Data Analyst | Python & SQL Enthusiast
 
-LinkedIn | GitHub
+[LinkedIn](https://www.linkedin.com/in/camilanerii/) | [GitHub](https://github.com/CamilaNerii)
