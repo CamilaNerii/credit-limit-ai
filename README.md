@@ -97,7 +97,7 @@ python scripts/03_data_preparation.py
 
 # 4. Train and Validate the Machine Learning Model (Phase 05)
 python scripts/analise_principal.py
-'''
+```
 
 ### 👩‍💻 Autora
 Camila Neri
